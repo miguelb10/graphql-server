@@ -1,27 +1,12 @@
-import { ApolloServer, gql } from "apollo-server";
-
-const typeDefs = gql`
-  type Person {
-    name: String!
-  }
-
-  type Query {
-    personCount: Int!
-    allPersons: [Person]!
-  }
-`
-
-const resolvers = {
-  Query: {
-    personCount: () => 1
-  }
-}
+import { ApolloServer } from "apollo-server";
+import schema from './schema';
+import resolvers from './resolvers/resolversMap';
 
 const server = new ApolloServer({
-  typeDefs,
+  schema,
   resolvers
-})
+});
 
 server.listen().then(({url}) => {
-  console.log(`server running at ${url}`)
-})
+  console.log(`Server: ${url}`);
+});
