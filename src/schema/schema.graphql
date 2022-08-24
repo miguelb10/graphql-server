@@ -9,6 +9,24 @@ type Query {
   course(id: ID!): Course!
 }
 
+type Mutation {
+  newCourse(course: CourseInput!): Course!
+  updateCourse(course: CourseInput!): Course!
+  deleteCourse(id: ID!): Course!
+}
+
+input CourseInput {
+  id: ID
+  title: String!
+  description: String!
+  clases: Int!
+  time: Float!
+  logo: String!
+  level: Level=ALL
+  path: String!
+  teacher: String!
+}
+
 "Students info"
 type Student {
   id: ID!
